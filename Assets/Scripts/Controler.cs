@@ -1,50 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Controler : MonoBehaviour
 {
-    [SerializeField] private float speed = 1f;
-    // Start is called before the first frame update
+    Rigidbody2D rigidbody2d;
+    float horizontal;
+    float vertical;
+
     void Start()
     {
-        //Step 10
-        //QualitySettings.vSyncCount = 0;
-        //Application.targetFrameRate = 10;
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Step 3
-        //float horizontal = Input.GetAxis("Horizontal");
-        //Debug.Log(horizontal);
-        //Vector2 position = transform.position;
-        //position.x = position.x + 0.1f * horizontal;
-        //transform.position = position;
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
+    }
 
-        //Step 9
-        //float horizontal = Input.GetAxis("Horizontal");
-        //float vertical = Input.GetAxis("Vertical");
-        //Vector2 position = transform.position;
-        //position.x = position.x + 0.1f * horizontal;
-        //position.y = position.y + 0.1f * vertical;
-        //transform.position = position;
+    void FixedUpdate()
+    {
+        Vector2 position = rigidbody2d.position;
+        position.x = position.x + 3.0f * horizontal * Time.deltaTime;
+        position.y = position.y + 3.0f * vertical * Time.deltaTime;
 
-        //Step 10
-        //float horizontal = Input.GetAxis("Horizontal");
-        //float vertical = Input.GetAxis("Vertical");
-        //Vector2 position = transform.position;
-        //position.x = position.x + 0.1f * horizontal;
-        //position.y = position.y + 0.1f * vertical;
-        //transform.position = position;
-
-        //Step 11
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector2 position = transform.position;
-        position.x = position.x + 0.1f * horizontal * speed * Time.deltaTime;
-        position.y = position.y + 0.1f * vertical * speed * Time.deltaTime;
-        transform.position = position;
+        rigidbody2d.MovePosition(position);
     }
 }
