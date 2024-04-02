@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controler : MonoBehaviour
 {
+    [SerializeField] private float speed = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,8 +43,8 @@ public class Controler : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector2 position = transform.position;
-        position.x = position.x + 0.1f * horizontal * Time.deltaTime;
-        position.y = position.y + 0.1f * vertical * Time.deltaTime;
+        position.x = position.x + 0.1f * horizontal * speed * Time.deltaTime;
+        position.y = position.y + 0.1f * vertical * speed * Time.deltaTime;
         transform.position = position;
     }
 }
