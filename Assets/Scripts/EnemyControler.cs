@@ -70,7 +70,7 @@ public class EnemyControler : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        RubyController player = other.gameObject.GetComponent<RubyController>();
+        Controler player = other.gameObject.GetComponent<Controler>();
 
         if (player != null)
         {
@@ -83,7 +83,7 @@ public class EnemyControler : MonoBehaviour
     {
         broken = false;
         rigidbody2D.simulated = false;
-        animator.SetTrigger("Fixed");
+        animator.SetTrigger("Ficed");
 
         smokeEffect.Stop();
     }
